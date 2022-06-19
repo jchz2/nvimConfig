@@ -1,20 +1,15 @@
 let mapleader=" "
 
-" testing
-"nnoremap <Leader>t :TestNearest<CR>
-"nnoremap <Leader>T :TestFile<CR>
-"nnoremap <Leader>TT :TestSuite<CR>
-
 " split resize
 nnoremap <Leader>> 10<C-w>>
 nnoremap <Leader>< 10<C-w><
 
 " quick semi
 nnoremap <Leader>; $a;<Esc>
-
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
+
 " shorter commands
 cnoreabbrev tree NERDTreeToggle
 cnoreabbrev blame Gblame
@@ -26,11 +21,13 @@ map <Leader>nt :NERDTreeFind<CR>
 map <Leader>p :Files<CR>
 map <Leader>ag :Ag<CR>
 
-" tmux navigator
-nnoremap <silent> <Leader><C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <Leader><C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <Leader><C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <Leader><C-l> :TuxNavigateRight<cr>
+"" tmux navigator
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -40,6 +37,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Remap surround to lowercase s so it does not add an empty space
 xmap s <Plug>VSurround
+
 " diagnostics
 nnoremap <leader>P :let @*=expand("%")<CR>
 
@@ -261,17 +259,12 @@ nnoremap <Leader>c :noh<CR>
 nmap <silent> <Leader>bg :hi Normal guibg=NONE ctermbg=NONE<CR>
 
 "Git-diff
-nnoremap <Leader>gd :Gdiffsplit<CR>
+nnoremap <Leader>gt :Gdiffsplit<CR>
 
 "Buscar B
 nnoremap <Leader>b :BLines<CR>
 
 "Traductor
-"nmap <silent> <Leader>T <Plug>Translate
-"vmap <silent> <Leader>T <Plug>TranslateV
-"nmap <silent> <Leader>W <Plug>TranslateW
-"vmap <silent> <Leader>W <Plug>TranslateWV
-"nmap <silent> <Leader>R :TranslateR -l en<CR>
 nmap <Leader>T <Plug>(coc-translator-p)
 vmap <Leader>T <Plug>(coc-translator-pv)
 " echo

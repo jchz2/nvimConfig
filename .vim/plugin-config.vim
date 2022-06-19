@@ -1,29 +1,36 @@
 " HTML, JSX
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 " Lightlane
-let g:lightline = {
-      \ 'active': {
-      \   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
-      \   'right': [['kitestatus'], ['filetype', 'percent', 'lineinfo'], ['gitbranch']]
-      \ },
-      \ 'inactive': {
-      \   'left': [['inactive'], ['relativepath']],
-      \   'right': [['bufnum']]
-      \ },
-      \ 'component': {
-      \   'bufnum': '%n',
-      \   'inactive': 'inactive'
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'kitestatus': 'kite#statusline'
-      \ },
-      \ 'colorscheme': 'gruvbox',
-      \ 'subseparator': {
-      \   'left': '',
-      \   'right': ''
-      \ }
-      \}
+"let g:lightline = {
+      "\ 'active': {
+      "\   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
+      "\   'right': [['kitestatus'], ['filetype', 'percent', 'lineinfo'], ['gitbranch']]
+      "\ },
+      "\ 'inactive': {
+      "\   'left': [['inactive'], ['relativepath']],
+      "\   'right': [['bufnum']]
+      "\ },
+      "\ 'component': {
+      "\   'bufnum': '%n',
+      "\   'inactive': 'inactive'
+      "\ },
+      "\ 'component_function': {
+      "\   'gitbranch': 'FugitiveHead',
+      "\   'kitestatus': 'kite#statusline'
+      "\ },
+      "\ 'colorscheme': 'gruvbox',
+      "\ 'colorscheme': 'nightfox',
+      "\ 'subseparator': {
+      "\   'left': '',
+      "\   'right': ''
+      "\ }
+      "\}
+
+lua << EOF
+require('feline').setup({
+    preset = 'onedark'
+})
+EOF
 
 "  nerdtee
 let NERDTreeShowHidden=1
@@ -46,8 +53,6 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:coc_global_extensions = [
       \ 'coc-tsserver'
       \ ]
-" tmux navigator
-let g:tmux_navigator_no_mappings = 1
 
 " coc
 autocmd FileType scss setl iskeyword+=@-@
@@ -150,11 +155,6 @@ let g:silicon = {
       \   'window-controls':       v:true,
       \ }
 
-"Config Bufferline In your init.lua or init.vim###
-"lua << EOF
-"require("bufferline").setup{}
-"EOF
-
 "Config floaterm
 let g:floaterm_keymap_new = '<Leader>t'
 let g:floaterm_keymap_toggle = '<Leader>ft'
@@ -167,3 +167,11 @@ let g:blamer_enabled = 1
 
 "lens
  let g:lens#width_resize_max = 999
+
+
+ "Bufferline 
+ " In your init.lua or init.vim
+set termguicolors
+lua << EOF
+require("bufferline").setup{}
+EOF
